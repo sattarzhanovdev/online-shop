@@ -1,0 +1,67 @@
+@import '../../scss/variables';
+
+.nav_container{
+  @media screen and (min-width: 1440px) {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .navBar{
+    @media screen and (min-width: 1440px) {
+      width: 1440px;
+    }
+    width: 90%;
+    padding: 15px 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .logo{
+      margin: 0;
+      padding: 0;
+      h3{
+        margin: 0;
+      }
+    }
+    .list{
+      @media screen and (min-width: 1024px) {
+        display: flex;
+      }
+      display: none;
+      align-items: center;
+      li{
+        list-style: none;
+        a{
+          text-decoration: none;
+          color: #282828;
+          font-weight: bold;
+          margin-right: 25px;
+        }
+      }
+    }
+    .icons{
+      display: flex;
+      align-items: center;
+      li{
+        list-style: none;
+        color: $default-up-header-color;
+        font-size: 20px;
+        margin: 0 5px;
+        a{
+          text-decoration: none;
+          color: $default-up-header-color;
+        }
+      }
+    }
+    .bars{
+      @media screen and (min-width: 1024px) {
+        display: none;
+      }
+      display: block;
+      li{
+        font-size: 20px;
+        list-style: none;
+        color: #282828;
+      }
+    }
+  }
+}
