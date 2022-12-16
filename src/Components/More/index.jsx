@@ -28,8 +28,13 @@ const More = ({item}) => {
 
   
 
-  const to__favorite = (id) => {
-    API.postFavorite()
+  const to__favorite = (data) => {
+    if(users){
+      API.postFavorite(data)
+    }else{
+      alert('Вы не авторизованы!')
+      Navigate('/auth/register')
+    }
   }
 
   return (
@@ -49,7 +54,7 @@ const More = ({item}) => {
         <div className="right__side">
           <div className="like">
             <li 
-              onClick={() => to__favorite()}
+              onClick={() => to__favorite(item)}
             >
               {
                 saveBase ? 
