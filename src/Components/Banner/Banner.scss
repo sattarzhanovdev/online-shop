@@ -28,6 +28,7 @@
         align-items: flex-start;
       }
       h3{
+        color: #2B4174;
         span{
           color: $default-color;
         }
@@ -53,34 +54,16 @@
         color: white;
         font-weight: bold;
         position: relative;
-        &::before{
-          content: '';
-          width: 0;
-          height: 50px;
+        cursor: pointer;
+        transition: .4s;
+        &:hover{
           background: #2B4174;
           border-radius: 50px;
           color: white;
           display: flex;
           justify-content: center;
           align-items: center;
-          position: absolute;
-          left: 0;
-          top: 0;
-          transition: .3s;
-        }
-        &:hover:before{
-          content: 'Купить сейчас';
-          width: 100%;
-          height: 50px;
-          background: #2B4174;
-          border-radius: 50px;
-          color: white;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          position: absolute;
-          left: 0;
-          top: 0;
+          transition: .4s;
         }
       }
     }

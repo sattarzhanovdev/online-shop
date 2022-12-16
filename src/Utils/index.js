@@ -5,9 +5,8 @@ export const NavList = [
   {id: 4, title: 'Контакты', path: '/contacts'},
 ]
 
-export const ProductsList = [
-  {id: 1, title: 'Пастрия', img: 'https://template.hasthemes.com/bucker/bucker/assets/img/others/services1.png'},
-  {id: 2, title: 'Завтрак', img: 'https://template.hasthemes.com/bucker/bucker/assets/img/others/services2.png'},
-  {id: 3, title: 'Кофе торт', img: 'https://template.hasthemes.com/bucker/bucker/assets/img/others/services3.png'},
-  {id: 4, title: 'Пончики', img: 'https://template.hasthemes.com/bucker/bucker/assets/img/others/services4.png'},
+export const LatestNewsList = [
+  {id: 1, title: 'Lorem ipsum doloril sit amet consepy', avatar: 'https://miro.medium.com/max/1200/1*lLqi5V_uW1_BJ5wXE08drQ.jpeg', photo: 'https://template.hasthemes.com/bucker/bucker/assets/img/blog/blog1.png'},
+  {id: 2, title: 'Lorem ipsum doloril sit amet consepy', avatar: 'https://miro.medium.com/max/1200/1*lLqi5V_uW1_BJ5wXE08drQ.jpeg', photo: 'https://template.hasthemes.com/bucker/bucker/assets/img/blog/blog2.png'},
+  {id: 3, title: 'Lorem ipsum doloril sit amet consepy', avatar: 'https://miro.medium.com/max/1200/1*lLqi5V_uW1_BJ5wXE08drQ.jpeg', photo: 'https://template.hasthemes.com/bucker/bucker/assets/img/blog/blog3.png'},
 ]

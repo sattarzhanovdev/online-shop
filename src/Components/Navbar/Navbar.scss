@@ -35,6 +35,13 @@
           color: #282828;
           font-weight: bold;
           margin-right: 25px;
+          transition: .2s;
+          &.active__page{
+            color: $default-color;
+          }
+          &:hover{
+            color: $default-color;
+          }
         }
       }
     }
@@ -44,8 +51,9 @@
       li{
         list-style: none;
         color: $default-up-header-color;
-        font-size: 20px;
-        margin: 0 5px;
+        font-size: 22px;
+        margin: 0 10px;
+        cursor: pointer;
         a{
           text-decoration: none;
           color: $default-up-header-color;
@@ -58,7 +66,7 @@
       }
       display: block;
       li{
-        font-size: 20px;
+        font-size: 22px;
         list-style: none;
         color: #282828;
       }

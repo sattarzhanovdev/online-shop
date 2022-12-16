@@ -1,0 +1,116 @@
+@import '../../scss/variables';
+
+.more__container{
+  @media screen and (min-width: 1440px) {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .more{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 15px;
+
+    @media screen and (min-width: 1024px) {
+      flex-direction: row;
+    }
+
+    @media screen and (min-width: 1440px) {
+      width: 1440px;
+    }
+    .left__side{
+      width: 100%;
+      display: flex;
+      align-items: flex-start;
+      flex-direction: column;
+      justify-content: center;
+      .more__image{
+        img{
+          width: 90%;
+        }
+      }
+    }
+    .right__side{
+      width: 90%;
+      height: auto;
+      padding: 15px;
+      background: $default-banner-background-color;
+      position: relative;
+      .like{
+        position: absolute;
+        right: 25px;
+        top: 25px;
+        li{
+          list-style: none;
+          font-size: 25px;
+        }
+      }
+      .more__price{
+        p{
+          color: $default-color;
+          font-weight: bold;
+          font-size: 16px;
+        }
+        h3{
+          margin: 0;
+        }
+      }
+      .more__summa{
+        margin-top: 25px;
+        p{
+          color: $default-color;
+          font-weight: bold;
+          font-size: 16px;
+        }
+        h3{
+          span{
+            font-size: 25px;
+          }
+        }
+      }
+      .more__count{
+        display: flex;
+        align-items: center;
+        button{
+          width: 25px;
+          height: 25px;
+          background: $default-color;
+          border-radius: 5px;
+          color: $default-up-header-color;
+          font-size: 18px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border: 0;
+          margin: 0;
+        }
+        input{
+          width: 35px;
+          height: 25px;
+          border-radius: 5px;
+          border: 1px solid $default-up-header-color;
+          padding: 0;
+          margin: 0 15px;
+          text-align: center;
+          outline: none;
+        }
+      }
+      .to__basket{
+        width: 120px;
+        height: 40px;
+        margin-top: 25px;
+        background: $default-color;
+        color: white;
+        font-weight: bold;
+        border: 0;
+        border-radius: 10px;
+        transition: .3s;
+        &:hover{
+          background: $default-up-header-color;
+        }
+      }
+    }
+  }
+}

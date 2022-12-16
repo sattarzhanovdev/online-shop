@@ -1,0 +1,81 @@
+@import '../../scss/variables';
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display+SC:wght@700&display=swap');
+
+.service__container{
+  width: 100%;
+  @media screen and (min-width: 1440px) {
+    display: flex;
+    justify-content: center;
+  }
+  .service__banner{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    @media screen and (min-width: 768px) {
+      flex-direction: row;
+    }
+    @media screen and (min-width: 1440px) {
+      width: 1440px;
+    }
+    .service__card{
+      width: 80%;
+      height: auto;
+      padding: 15px;
+      border-radius: 10px;
+      margin: 30px 0;
+      @media screen and (min-width: 768px) {
+        margin: 30px 15px;
+      }
+      @media screen and (min-width: 1440px) {
+        height: 250px;
+      }
+      &:nth-child(1){
+        background: url('https://template.hasthemes.com/bucker/bucker/assets/img/bg/banner1.png') center / cover;
+      }
+      &:nth-child(2){
+        background: url('https://template.hasthemes.com/bucker/bucker/assets/img/bg/banner2.png') center / cover;
+      }
+
+      h5{
+        color: $default-up-header-color;
+        span{
+          color: $default-color;
+        }
+        @media screen and (min-width: 1440px) {
+          font-size: 20px;
+        }
+      }
+
+      h3{
+        font-family: 'Playfair Display SC';
+        font-weight: bold;
+        @media screen and (min-width: 1440px) {
+          font-size: 25px;
+        }
+      }
+
+      button{
+        width: 100px;
+        height: 35px;
+        border: 0;
+        border-radius: 10px;
+        background: $default-color;
+        color: white;
+        font-weight: bold;
+        font-size: 10px;
+        cursor: pointer;
+        transition: .3s;
+        &:hover{
+          background: $default-up-header-color;
+        }
+        @media screen and (min-width: 1440px) {
+          width: 150px;
+          height: 40px;
+          font-size: 15px;
+        }
+      }
+    }
+  }
+}

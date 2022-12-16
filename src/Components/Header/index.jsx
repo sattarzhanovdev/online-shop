@@ -43,7 +43,7 @@ const Header = () => {
               <li
                 onClick={() => setShowSide(false)}
               >
-                <Link to={'/login'}>
+                <Link to={'/auth/login'}>
                   Login
                 </Link>
               </li>
@@ -59,6 +59,7 @@ const Header = () => {
           }
         </ul>
       </div>
+
     </div>
   )
 }
