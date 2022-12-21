@@ -1,14 +1,46 @@
 import React from 'react'
+import { useForm } from 'react-hook-form'
+import { Link, useNavigate } from 'react-router-dom'
+import { API } from '../../../API'
 import './Register.scss'
 
 const Register = () => {
-  const [ file, setFile ] = React.useState('')
+  const { 
+    register, 
+    handleSubmit,
+    formState: {errors, isValid},
+    reset
+  } = useForm({
+    mode: 'onChange'
+  });
 
-  console.log(file);
+  const Navigate = useNavigate()
+
+  const handleRegister = (data) => {
+    if(data){
+      API.register(data)
+        .then(res => {
+          if(res){
+            console.log(res.data);
+          }
+        }) 
+
+      setTimeout(() => {
+        API.getToken({username: data.username, password: data.password})
+        .then(res => {
+          localStorage.setItem('accessToken', res.data.access)
+          localStorage.setItem('refreshToken', res.data.refresh)
+        }, 1000)
+      })
+    }
+  }
+
   return (
     <div className="register__container">
-      <img src={file.name} alt="" />
-      <form className='register'>
+      <form 
+        className='register'
+        onSubmit={handleSubmit(data => handleRegister(data))}
+      >
         <div className="up__register">
           <h2>Регистрация</h2>
         </div>
@@ -18,6 +50,7 @@ const Register = () => {
             <input 
               type="text"
               placeholder='Имя пользователя'
+              {...register("username")}
             />
           </div>
           <div>
@@ -25,20 +58,30 @@ const Register = () => {
             <input 
               type="email"
               placeholder='Email'
+              {...register("email")}
             />
           </div>
           <div>
-            <p>Фото профиля</p>
+            <p>Номер телефона</p>
             <input 
-              type="file"
-              className='file'
-              onChange={e => setFile(e.target.files[0])}
+              type="text"
+              placeholder='Номер телефона'
+              {...register("phone_number")}
             />
           </div>
           <div>
             <p>Дата рождения</p>
             <input 
               type="date"
+              {...register("birth_date")}
+            />
+          </div>
+          <div>
+            <p>Обо мне</p>
+            <textarea
+              type="text"
+              placeholder='Обо мне'
+              {...register("about")}
             />
           </div>
           <div>
@@ -46,13 +89,7 @@ const Register = () => {
             <input 
               type="password"
               placeholder='Пароль'
-            />
-          </div>
-          <div>
-            <p>Подтвердите пароль</p>
-            <input 
-              type="password"
-              placeholder='Подтвердите пароль'
+              {...register("password")}
             />
           </div>
 
@@ -61,6 +98,12 @@ const Register = () => {
               Регистрация
             </button>
           </div>
+
+          <p className='have__account'>
+            <Link to={'/auth/login'}>
+              Есть аккаунт?
+            </Link>
+          </p>
         </div>
       </form>
     </div>

@@ -5,7 +5,7 @@ import Wishlist from './Wishlist'
 const Pages = {
   Home,
   ProductsMore,
-  Wishlist
+  Wishlist,
 }
 
 export const MainPages = {

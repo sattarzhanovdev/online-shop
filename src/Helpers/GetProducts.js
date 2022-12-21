@@ -24,16 +24,3 @@ export const GetProducts = () => {
     setPage,
   }
 }
-
-export const GetSavedProducts = () => {
-  const [ saveBase, setSavesBase ] = React.useState(null)
-
-  React.useEffect(() => {
-    API.getSavedProducts()
-      .then(res => setSavesBase(res.data))
-  }, [])
-
-  return {
-    saveBase
-  }
-}

@@ -2,40 +2,68 @@ import React from 'react'
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai'
 import { useNavigate } from 'react-router-dom'
 import { API } from '../../API'
-import { GetProducts, GetSavedProducts } from '../../Helpers/GetProducts'
-import { useAuth } from '../../Providers/useAuth'
+import ZoomedImage from '../ZoomedImage'
+
 import './More.scss'
 
 const More = ({item}) => {
   const [ count, setCount ] = React.useState(1)
-  const { users } = useAuth()
+  const [ saveBase, setSaveBase ] = React.useState(null)
+  const [ have, setHave ] = React.useState(false)
+  const [ refresh, setRefresh ] = React.useState('')
+  const [ image, setImage ] = React.useState('')
+  const [ activeZoom, setActiveZoom ] = React.useState(false)
 
-  const { saveBase } = GetSavedProducts()
+  const accessToken = localStorage.getItem('accessToken')
+
+  React.useEffect(() => {
+    API.getFavorites(accessToken)
+    .then(res => {
+      setSaveBase(res.data)
+      // res.data?.find(val => val.product === item?.id ? setHave(true) : setHave(false))
+      res.data?.find(val => val.product === item?.id ? setHave(val) : '')
+    })
+    setTimeout(() => {
+      setRefresh('Helloo')
+    }, 1000)
+    }, [refresh]) 
 
   const Navigate = useNavigate()
 
   const to__basket = () => {
-    if(users){
-      API.postBaskets({
-        ...item,
-        count
-      })
+    if(accessToken){
+      API.postBaskets(accessToken, {products: [JSON.stringify(item.id)], is_active: item.is_active})
+      setRefresh('post!')
     }else{
       alert('Вы не авторизованы')
       Navigate('/auth/register')
     }
   }
 
-  
-
-  const to__favorite = (data) => {
-    if(users){
-      API.postFavorite(data)
+  const to__favorite = () => {
+    if(accessToken){
+      API.postFavorite(accessToken, {product: item.id, is_active: item.is_active})
+      setRefresh('post')
     }else{
       alert('Вы не авторизованы!')
       Navigate('/auth/register')
     }
-  }
+  }   
+  
+  const delete__favorite = (id) => {
+    if(accessToken){
+      API.deleteFavorite(accessToken, id)
+      setRefresh('delete')
+      setTimeout(() => {
+        alert('Успешно удалено!')
+        window.location.reload()
+      }, 1000)
+    }else{
+      alert('Вы не авторизованы!')
+      Navigate('/auth/register')
+    }
+  }  
+
 
   return (
     <div className='more__container'>
@@ -48,20 +76,39 @@ const More = ({item}) => {
             <img 
               src={item?.image} 
               alt={item?.title}
+              onClick={() => {
+                setImage(item?.image)
+                setActiveZoom(true)
+              }}
             />
+
+            {/* <ReactImageMagnify {...{
+              smallImage: {
+                alt: item?.title,
+                isFluidWidth: 200,
+                src: item?.image,
+                width: 1200,
+                height: 900
+              },
+              largeImage: {
+                src: item?.image,
+                width: 1200 ,
+                height: 900
+              }
+            }
+
+            }/> */}
           </div>
         </div>
         <div className="right__side">
           <div className="like">
-            <li 
-              onClick={() => to__favorite(item)}
+            <button 
+              onClick={() => have.product === item?.id ? delete__favorite(have.id) : to__favorite()}
             >
               {
-                saveBase ? 
-                saveBase.filter(val => val.id === item.id ? <AiFillHeart /> : <AiOutlineHeart />) :
-                <AiOutlineHeart />
+                have.product === item?.id ? <AiFillHeart /> : <AiOutlineHeart />
               }
-            </li>
+            </button>
           </div>
           <div className="more__price">
             <p>
@@ -105,6 +152,14 @@ const More = ({item}) => {
           </button>
         </div>
       </div>
+      {
+        activeZoom ? 
+        <ZoomedImage 
+          image={image}
+          setActive={setActiveZoom}
+        /> : 
+        null 
+      }
     </div>
   )
 }

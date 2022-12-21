@@ -5,10 +5,12 @@ import { BiSearch, BiHeart, BiShoppingBag } from 'react-icons/bi'
 import { VscThreeBars } from 'react-icons/vsc' 
 import './Navbar.scss'
 import Sidebar from '../Sidebar'
+import Basket from '../Basket'
 
 const NavBar = () => {
   const [ active, setActive ] = React.useState(false);
   const [ activePage, setActivePage ] = React.useState('Главная');
+  const [ activeBasket, setActiveBasket ] = React.useState(false);
 
   const Navigate = useNavigate( )
   return (
@@ -45,7 +47,7 @@ const NavBar = () => {
               <BiHeart />
             </Link>
           </li>
-          <li>
+          <li onClick={() => setActiveBasket(true)}>
             <BiShoppingBag />
           </li>
         </ul>
@@ -62,6 +64,10 @@ const NavBar = () => {
         activePage={activePage}
         setActivePage={setActivePage}
       />
+      {/* <Basket 
+        activeBasket={activeBasket}
+        setActiveBasket={setActiveBasket}
+      /> */}
     </div>
   )
 }

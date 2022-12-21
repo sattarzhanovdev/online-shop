@@ -20,14 +20,12 @@ const Products = () => {
         <h2>Новые Продукты</h2>
         <div className="products__cards">
           {
-            filteredBase?.slice(
-              (page - 1) * PAGE_SIZE,
-              (page - 1) * PAGE_SIZE + PAGE_SIZE
-            ).reverse()
-            .map(item => (
+            filteredBase ? 
+            filteredBase.slice(0, 10).reverse()
+            .map((item, i) => (
               <div 
+                key={i}
                 className="products__card"
-                key={item.id}
               >
                 <div className="products__image">
                   <img 
@@ -51,6 +49,11 @@ const Products = () => {
                 </div>
               </div>
             ))
+            :
+            <div className='nothing'>
+              <img src="/img/no.png" alt="" />
+              <h2>Продуктов нет!</h2>
+            </div>
           }
 
         {

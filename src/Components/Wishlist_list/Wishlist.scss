@@ -1,21 +1,22 @@
 @import '../../scss/variables';
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display+SC:wght@700&display=swap');
 
-.products__container{
+.wishlist__container{
   @media screen and (min-width: 1440px) {
     width: 100%;
     display: flex;
     justify-content: center;
   }
-  .products{
+  .wishlist{
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     h2{
       font-family: 'Playfair Display SC';
+      margin-bottom: 50px;
     }
-    .products__cards{
+    .wishlist__cards{
       width: 100%;
       display: flex;
       align-items: center;
@@ -46,6 +47,19 @@
         align-items: flex-start;
         justify-content: center;
         flex-direction: column;
+        position: relative;
+        .delete{
+          button{
+            background: none;
+            border: 0;
+            font-size: 25px;
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            color: $default-color;
+            cursor: pointer;
+          }
+        }
         .products__image{
           width: 100%;
           display: flex;
@@ -55,7 +69,6 @@
             width: 250px;
             height: 250px;
             object-fit: cover;
-            cursor: pointer;
           }
         }
         .products__more{
@@ -93,24 +106,23 @@
           object-fit: cover;
           object-position: center;
         }
-      }
-      .pagination{
-        display: flex;
-        align-items: center;
-        button{
-          width: 35px;
-          height: 35px;
-          font-size: 26px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          background: $default-up-header-color;
-          color: white;
-          border: 0;
-          border-radius: 5px;
+        h2{
+          margin-bottom: 0;
         }
-        span{
-          margin: 0 15px;
+        button{
+          @media screen and (min-width: 1024px) {
+            width: 400px;
+          }
+          width: 90%;
+          height: 40px;
+          color: white;
+          font-weight: bold;
+          font-size: 15px;
+          background: $default-color;
+          border: 0;
+          border-radius: 10px;
+          margin-top: 15px;
+          cursor: pointer;
         }
       }
     }

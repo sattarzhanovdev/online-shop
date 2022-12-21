@@ -10,9 +10,17 @@ import { AuthPages } from './Pages/AuthPages'
 
 axios.defaults.baseURL = 'https://cryxxen.pythonanywhere.com'
 const App = () => { 
+
+  const accessToken = localStorage.getItem('accessToken')
   React.useEffect(() => {
     API.getProducts()
       .then(res => console.log(res.data))
+
+    API.getUser(accessToken)
+      .then(res => {
+        console.log(res.data);
+        localStorage.setItem('user', JSON.stringify(res.data))
+      })
   }, [])
 
   return (

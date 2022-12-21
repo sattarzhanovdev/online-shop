@@ -40,9 +40,14 @@
           border: 1px solid $default-color;
           border-radius: 10px;
           outline: none;
-          &.file{
-            border: 0;
-          }
+        }
+        textarea{
+          width: 90%;
+          height: 50px;
+          padding: 10px 10px;
+          border: 1px solid $default-color;
+          border-radius: 10px;
+          outline: none;
         }
         button{
           width: 100%;
@@ -53,6 +58,12 @@
           color: white;
           font-weight: bold;
           margin-top: 15px;
+        }
+      }
+      .have__account{
+        text-align: center;
+        a{
+          color: black;
         }
       }
     }
