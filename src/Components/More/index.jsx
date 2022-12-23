@@ -8,7 +8,6 @@ import './More.scss'
 
 const More = ({item}) => {
   const [ count, setCount ] = React.useState(1)
-  const [ saveBase, setSaveBase ] = React.useState(null)
   const [ have, setHave ] = React.useState(false)
   const [ refresh, setRefresh ] = React.useState('')
   const [ image, setImage ] = React.useState('')
@@ -19,8 +18,6 @@ const More = ({item}) => {
   React.useEffect(() => {
     API.getFavorites(accessToken)
     .then(res => {
-      setSaveBase(res.data)
-      // res.data?.find(val => val.product === item?.id ? setHave(true) : setHave(false))
       res.data?.find(val => val.product === item?.id ? setHave(val) : '')
     })
     setTimeout(() => {
@@ -48,7 +45,7 @@ const More = ({item}) => {
       alert('Вы не авторизованы!')
       Navigate('/auth/register')
     }
-  }   
+  }
   
   const delete__favorite = (id) => {
     if(accessToken){

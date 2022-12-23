@@ -1,16 +1,14 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { NavList } from '../../Utils'
-import { BiSearch, BiHeart, BiShoppingBag } from 'react-icons/bi'
+import {  BiHeart, BiShoppingBag } from 'react-icons/bi'
 import { VscThreeBars } from 'react-icons/vsc' 
 import './Navbar.scss'
 import Sidebar from '../Sidebar'
-import Basket from '../Basket'
 
 const NavBar = () => {
   const [ active, setActive ] = React.useState(false);
   const [ activePage, setActivePage ] = React.useState('Главная');
-  const [ activeBasket, setActiveBasket ] = React.useState(false);
 
   const Navigate = useNavigate( )
   return (
@@ -40,15 +38,14 @@ const NavBar = () => {
         </ul>
         <ul className="icons">
           <li>
-            <BiSearch />
-          </li>
-          <li>
             <Link to="/wishlist">
               <BiHeart />
             </Link>
           </li>
-          <li onClick={() => setActiveBasket(true)}>
-            <BiShoppingBag />
+          <li>
+            <Link to="/basket">
+              <BiShoppingBag />
+            </Link>
           </li>
         </ul>
         <ul className='bars'>
@@ -64,10 +61,6 @@ const NavBar = () => {
         activePage={activePage}
         setActivePage={setActivePage}
       />
-      {/* <Basket 
-        activeBasket={activeBasket}
-        setActiveBasket={setActiveBasket}
-      /> */}
     </div>
   )
 }

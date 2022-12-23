@@ -70,7 +70,7 @@ const Wishlist_List = () => {
                   <img 
                     src={item.image}
                     alt={item.title}
-                    onClick={() => Navigate(`products/product/${item.id}`)}
+                    onClick={() => Navigate(`/products/product/${item.id}`)}
                   />
                 </div>
                 <div className="products__more">

@@ -1,5 +1,7 @@
 import axios from "axios"
 
+export const BASE_URL = 'https://cryxxen.pythonanywhere.com'
+
 export const API = {
   getProducts: () => axios.get('/products/product/'),
   getProductsMore: (id) => axios.get(`/products/product/${id}/`),
@@ -10,6 +12,11 @@ export const API = {
     }
   }),
   postBaskets: (accessToken, data) => axios.post('/baskets/', data, {
+    headers: {
+      'Authorization': `Bearer ${accessToken}`
+    }
+  },),
+  deleteBaskets: (accessToken, id) => axios.delete(`/baskets/${id}/`, {
     headers: {
       'Authorization': `Bearer ${accessToken}`
     }

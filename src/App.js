@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import { API } from './API'
+import { API, BASE_URL } from './API'
 import './App.scss'
 import { Route, Routes } from 'react-router-dom'
 import { MainPages } from './Pages/MainPages'
@@ -8,7 +8,7 @@ import Header from './Components/Header'
 import NavBar from './Components/Navbar'
 import { AuthPages } from './Pages/AuthPages'
 
-axios.defaults.baseURL = 'https://cryxxen.pythonanywhere.com'
+axios.defaults.baseURL = BASE_URL
 const App = () => { 
 
   const accessToken = localStorage.getItem('accessToken')
@@ -43,6 +43,10 @@ const App = () => {
         <Route 
           path='/wishlist'
           element={<MainPages.Pages.Wishlist />}
+        />
+        <Route 
+          path='/basket'
+          element={<MainPages.Pages.Basket />}
         />
         <Route 
           path='/auth/login'

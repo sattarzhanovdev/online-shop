@@ -1,0 +1,147 @@
+@import '../../scss/variables';
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display+SC:wght@700&display=swap');
+
+.basket__container{
+  @media screen and (min-width: 1440px) {
+    display: flex;
+    justify-content: center;
+  }
+  .basket{
+    @media screen and (min-width: 1440px) {
+      width: 1440px;
+    }
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    h2{
+      font-family: 'Playfair Display SC';
+      margin-bottom: 50px;
+    }
+    .basket__table{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      div{
+        width: 280px;
+        @media screen and (min-width: 768px) {
+          width: 700px;
+        }
+        @media screen and (min-width: 1024px) {
+          width: 900px;
+        }
+        @media screen and (min-width: 1440px) {
+          width: 1300px;
+        }
+        height: auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        flex-direction: column;
+        border-bottom: 2px solid $default-up-text-color;
+        @media screen and (min-width: 768px) {
+          flex-direction: row;
+          border-bottom: 1px solid $default-up-text-color;
+        }
+        img{
+          width: 250px;
+          @media screen and (min-width: 768px) {
+            width: 150px;
+          }
+        }
+        h3{
+          text-align: center;
+          @media screen and (min-width: 768px) {
+            width: 300px;
+            font-size: 15px;
+          }
+        }
+        .count{
+          width: auto;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: row;
+          border: none;
+          button{
+            width: 35px;
+            height: 35px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: $default-color;
+            color: white;
+            border: none;
+            cursor: pointer;
+          }
+          input{
+            width: 35px;
+            height: 35px;
+            text-align: center;
+            border-radius: 50px;
+            border: 1px solid $default-up-text-color;
+            margin: 0 15px;
+            outline: none;
+          }
+        }
+        h2{
+          font-family: Arial, Helvetica, sans-serif;
+          @media screen and (min-width: 768px) {
+            width: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 17px;
+            margin: 0;
+          }
+        }
+        .delete{
+          width: 50px;
+          border: none;
+          li{
+            list-style: none;
+            font-size: 20px;
+            color: $default-color;
+          }
+        }
+      }
+      .nothing{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        border: none;
+        img{
+          width: 200px;
+          height: 200px;
+          object-fit: cover;
+          object-position: center;
+        }
+        h2{
+          width: 100%;
+          margin-bottom: 0;
+          font-family: "Playfair Display SC";
+          font-size: 25px;
+        }
+        button{
+          @media screen and (min-width: 1024px) {
+            width: 400px;
+          }
+          width: 90%;
+          height: 40px;
+          color: white;
+          font-weight: bold;
+          font-size: 15px;
+          background: $default-color;
+          border: 0;
+          border-radius: 10px;
+          margin-top: 15px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
