@@ -48,6 +48,10 @@ const App = () => {
           path='/basket'
           element={<MainPages.Pages.Basket />}
         />
+        <Route
+          path='/goods'
+          element={<MainPages.Pages.Goods />}
+        />
         <Route 
           path='/auth/login'
           element={<AuthPages.Pages.Login />}

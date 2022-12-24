@@ -2,7 +2,7 @@ import React from 'react'
 import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
 import { API } from '../../../API'
-import './Login.scss'
+import cls from './Login.module.scss'
 
 const Login = () => {
   const Navigate = useNavigate()
@@ -28,15 +28,15 @@ const Login = () => {
   } = useForm()
 
   return (
-    <div className="register__container">
+    <div className={cls.register__container}>
       <form 
-        className='register'
+        className={cls.register}
         onSubmit={handleSubmit(data => handleLogin(data))}
       >
-        <div className="up__register">
+        <div className={cls.up__register}>
           <h2>Логин</h2>
         </div>
-        <div className="down__register">
+        <div className={cls.down__register}>
           <div>
             <p>Имя пользователя</p>
             <input 
@@ -52,15 +52,12 @@ const Login = () => {
               placeholder='Пароль'
               {...register('password')}
             />
-          </div>
-
-          <div>
             <button type='submit'>
               Войти
             </button>
-          </div>
 
-          <p className='no__account'>
+          </div>
+          <p className={cls.no__account}>
             <Link to={'/auth/register'}>
               Нету аккаунта?
             </Link>

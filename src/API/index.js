@@ -5,7 +5,6 @@ export const BASE_URL = 'https://cryxxen.pythonanywhere.com'
 export const API = {
   getProducts: () => axios.get('/products/product/'),
   getProductsMore: (id) => axios.get(`/products/product/${id}/`),
-  getCategories: () => axios.get('/categories/category/'),
   getBaskets: (accessToken) => axios.get('/baskets/', {
     headers: {
       'Authorization': `Bearer ${accessToken}`

@@ -1,7 +1,6 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
-import { API } from '../../../API'
 import './Register.scss'
 
 const Register = () => {
@@ -14,25 +13,26 @@ const Register = () => {
     mode: 'onChange'
   });
 
-  const Navigate = useNavigate()
-
   const handleRegister = (data) => {
-    if(data){
-      API.register(data)
-        .then(res => {
-          if(res){
-            console.log(res.data);
-          }
-        }) 
+    console.log(data)
 
-      setTimeout(() => {
-        API.getToken({username: data.username, password: data.password})
-        .then(res => {
-          localStorage.setItem('accessToken', res.data.access)
-          localStorage.setItem('refreshToken', res.data.refresh)
-        }, 1000)
-      })
-    }
+    // if(data){
+    //   API.register(data)
+    //     .then(res => {
+    //       if(res){
+    //         console.log(res.data);
+    //       }
+    //     })
+    //
+    //   setTimeout(() => {
+    //     API.getToken({username: data.username, password: data.password})
+    //     .then(res => {
+    //       localStorage.setItem('accessToken', res.data.access)
+    //       localStorage.setItem('refreshToken', res.data.refresh)
+    //     }, 1000)
+    //   })
+    // }
+    // reset()
   }
 
   return (

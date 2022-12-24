@@ -1,0 +1,139 @@
+@import '../../scss/variables';
+
+.goods__container{
+  .goods{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    .search{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 25px 0;
+      input{
+        width: 500px;
+        height: 40px;
+        padding: 0 15px;
+        border: 1px solid #243a6e;
+        border-radius: 5px;
+        background: #FBF5E2;
+        font-family: Arial, Helvetica, sans-serif;
+        outline: none;
+      }
+      button{
+        width: 50px;
+        height: 40px;
+        border-radius: 5px;
+        border: 0;
+        margin-left: 15px;
+        background: #243a6e;
+        color: #FBF5E2;
+        cursor: pointer;
+      }
+    }
+    .goods__cards{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        @media screen and (min-width: 1024px) {
+          justify-content: flex-start;
+        }
+        @media screen and (min-width: 1440px) {
+          width: 1440px;
+        }
+        .goods__card{
+          @media screen and (min-width: 768px) {
+            width: 250px;
+            margin: 15px 25px;
+          }
+          @media screen and (min-width: 1440px) {
+            margin: 15px 35px;
+          }
+          width: 80%;
+          height: 400px;
+          background: $default-banner-background-color;
+          border: 1px solid $default-up-text-color;
+          border-radius: 15px;
+          margin-bottom: 25px;
+          padding: 15px;
+          display: flex;
+          align-items: flex-start;
+          justify-content: center;
+          flex-direction: column;
+          .goods__image{
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            img{
+              width: 250px;
+              height: 250px;
+              object-fit: cover;
+              cursor: pointer;
+            }
+          }
+          .goods__more{
+            p{
+              font-weight: bold;
+            }
+            h3{
+              color: $default-up-header-color;
+            }
+            button{
+              width: 100px;
+              height: 35px;
+              background: $default-color;
+              color: white;
+              font-weight: bold;
+              border: 0;
+              border-radius: 10px;
+              transition: .3s;
+              cursor: pointer;
+              &:hover{
+                background: $default-up-header-color;
+              }
+            }
+          }
+        }
+        .nothing{
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          img{
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            object-position: center;
+          }
+          h2{
+            font-family: "Playfair Display SC";
+            font-size: 25px;
+          }
+        }
+        .pagination{
+          display: flex;
+          align-items: center;
+          button{
+            width: 35px;
+            height: 35px;
+            font-size: 26px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: $default-up-header-color;
+            color: white;
+            border: 0;
+            border-radius: 5px;
+          }
+          span{
+            margin: 0 15px;
+          }
+        }
+      }
+  }
+}

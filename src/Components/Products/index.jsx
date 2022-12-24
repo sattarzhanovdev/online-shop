@@ -11,6 +11,7 @@ const Products = () => {
 
   const Navigate = useNavigate()
 
+
   const nextPage = () => setPage(prev => prev + 1)
   const prevPage = () => setPage(prev => prev - 1)
   
@@ -20,8 +21,8 @@ const Products = () => {
         <h2>Новые Продукты</h2>
         <div className="products__cards">
           {
-            filteredBase ? 
-            filteredBase.slice(0, 10).reverse()
+            filteredBase?.length > 0 ?
+              filteredBase?.slice(0, 10).reverse()
             .map((item, i) => (
               <div 
                 key={i}

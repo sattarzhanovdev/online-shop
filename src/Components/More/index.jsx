@@ -2,16 +2,13 @@ import React from 'react'
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai'
 import { useNavigate } from 'react-router-dom'
 import { API } from '../../API'
-import ZoomedImage from '../ZoomedImage'
-
+import ReactImageMagnify from 'react-image-magnify'
 import './More.scss'
 
 const More = ({item}) => {
   const [ count, setCount ] = React.useState(1)
   const [ have, setHave ] = React.useState(false)
   const [ refresh, setRefresh ] = React.useState('')
-  const [ image, setImage ] = React.useState('')
-  const [ activeZoom, setActiveZoom ] = React.useState(false)
 
   const accessToken = localStorage.getItem('accessToken')
 
@@ -70,31 +67,26 @@ const More = ({item}) => {
             <h3>{item?.title}</h3>
           </div>
           <div className="more__image">
-            <img 
-              src={item?.image} 
-              alt={item?.title}
-              onClick={() => {
-                setImage(item?.image)
-                setActiveZoom(true)
+            <ReactImageMagnify
+              style={{
+                zIndex: 1,
               }}
-            />
-
-            {/* <ReactImageMagnify {...{
+              {...{
               smallImage: {
                 alt: item?.title,
-                isFluidWidth: 200,
                 src: item?.image,
-                width: 1200,
-                height: 900
+                isFluidWidth: 500,
+                width: 500,
+                height: 500
               },
               largeImage: {
                 src: item?.image,
-                width: 1200 ,
-                height: 900
+                width: 800,
+                height: 800
               }
             }
 
-            }/> */}
+            }/>
           </div>
         </div>
         <div className="right__side">
@@ -149,14 +141,6 @@ const More = ({item}) => {
           </button>
         </div>
       </div>
-      {
-        activeZoom ? 
-        <ZoomedImage 
-          image={image}
-          setActive={setActiveZoom}
-        /> : 
-        null 
-      }
     </div>
   )
 }
