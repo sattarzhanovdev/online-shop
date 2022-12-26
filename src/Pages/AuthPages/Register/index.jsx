@@ -2,6 +2,7 @@ import React from 'react'
 import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
 import './Register.scss'
+import {API} from "../../../API";
 
 const Register = () => {
   const { 
@@ -13,26 +14,35 @@ const Register = () => {
     mode: 'onChange'
   });
 
-  const handleRegister = (data) => {
-    console.log(data)
+  const [ file, setFile ] = React.useState(null)
 
-    // if(data){
-    //   API.register(data)
-    //     .then(res => {
-    //       if(res){
-    //         console.log(res.data);
-    //       }
-    //     })
-    //
-    //   setTimeout(() => {
-    //     API.getToken({username: data.username, password: data.password})
-    //     .then(res => {
-    //       localStorage.setItem('accessToken', res.data.access)
-    //       localStorage.setItem('refreshToken', res.data.refresh)
-    //     }, 1000)
-    //   })
-    // }
-    // reset()
+  const handleRegister = (data) => {
+    const formData = new FormData();
+    formData.append('avatarka', file);
+    formData.append('username', data.username);
+    formData.append('password', data.password);
+    formData.append('email', data.email);
+    formData.append('phone_number', data.phone_number);
+    formData.append('birth_date', data.birth_date);
+    formData.append('about', data.about);
+
+    if(formData){
+      API.register(formData)
+        .then(res => {
+          if(res){
+            localStorage.setItem('user', JSON.stringify(res.data));
+          }
+        })
+
+      setTimeout(() => {
+        API.getToken({username: data.username, password: data.password})
+        .then(res => {
+          localStorage.setItem('accessToken', res.data.access)
+          localStorage.setItem('refreshToken', res.data.refresh)
+        }, 1000)
+      })
+    }
+    reset()
   }
 
   return (
@@ -51,6 +61,13 @@ const Register = () => {
               type="text"
               placeholder='Имя пользователя'
               {...register("username")}
+            />
+          </div>
+          <div>
+            <p>Фото профиля</p>
+            <input
+              type="file"
+              onChange={e => setFile(e.target.files[0])}
             />
           </div>
           <div>

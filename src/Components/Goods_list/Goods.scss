@@ -115,25 +115,33 @@
             font-size: 25px;
           }
         }
-        .pagination{
-          display: flex;
-          align-items: center;
-          button{
-            width: 35px;
-            height: 35px;
-            font-size: 26px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: $default-up-header-color;
-            color: white;
-            border: 0;
-            border-radius: 5px;
-          }
-          span{
-            margin: 0 15px;
-          }
+      }
+    .pagination{
+      display: flex;
+      align-items: center;
+      margin: 50px 0;
+      button{
+        width: 35px;
+        height: 35px;
+        font-size: 26px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: $default-up-header-color;
+        color: white;
+        border: 0;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      span{
+        margin: 0 15px;
+        cursor: pointer;
+        color: $default-color;
+        &.active{
+          color: #243a6e;
+          text-decoration: underline;
         }
       }
+    }
   }
 }

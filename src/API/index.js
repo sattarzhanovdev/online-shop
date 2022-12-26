@@ -15,6 +15,11 @@ export const API = {
       'Authorization': `Bearer ${accessToken}`
     }
   },),
+  postBasketDetails: (accessToken, data) => axios.post('/basket_detail/', data, {
+    headers: {
+      'Authorization': `Bearer ${accessToken}`
+    }
+  },),
   deleteBaskets: (accessToken, id) => axios.delete(`/baskets/${id}/`, {
     headers: {
       'Authorization': `Bearer ${accessToken}`
@@ -37,6 +42,7 @@ export const API = {
   }),
   register: (data) => axios.post('/users/user/', data),
   login: (data) => axios.post('/token/', data),
+  edit: (id, data) => axios.put(`/users/current-user/${id}/`, data),
   getToken: (data) => axios.post('/token/', data),
   getUser: (accessToken) => axios.get('/users/get_user/', {
     headers: {

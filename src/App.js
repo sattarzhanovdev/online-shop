@@ -6,23 +6,11 @@ import { Route, Routes } from 'react-router-dom'
 import { MainPages } from './Pages/MainPages'
 import Header from './Components/Header'
 import NavBar from './Components/Navbar'
+import Footer from './Components/Footer'
 import { AuthPages } from './Pages/AuthPages'
 
 axios.defaults.baseURL = BASE_URL
-const App = () => { 
-
-  const accessToken = localStorage.getItem('accessToken')
-  React.useEffect(() => {
-    API.getProducts()
-      .then(res => console.log(res.data))
-
-    API.getUser(accessToken)
-      .then(res => {
-        console.log(res.data);
-        localStorage.setItem('user', JSON.stringify(res.data))
-      })
-  }, [])
-
+const App = () => {
   return (
     <div>
       <Header />
@@ -60,8 +48,16 @@ const App = () => {
           path='/auth/register'
           element={<AuthPages.Pages.Register />}
         />
+        <Route
+          path='/my_account'
+          element={<AuthPages.Pages.MyAccount />}
+        />
+        <Route
+          path='/about'
+          element={<MainPages.Pages.About />}
+        />
       </Routes>
-      
+      {/*<Footer />*/}
     </div>
   )
 }

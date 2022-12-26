@@ -26,8 +26,10 @@ const More = ({item}) => {
 
   const to__basket = () => {
     if(accessToken){
-      API.postBaskets(accessToken, {products: [JSON.stringify(item.id)], is_active: item.is_active})
+      API.postBaskets(accessToken, {products: [JSON.stringify(item.id)], is_active: item.is_active, count: count})
       setRefresh('post!')
+
+      API.postBasketDetails(accessToken, {products: [JSON.stringify(item.id)], count: count})
     }else{
       alert('Вы не авторизованы')
       Navigate('/auth/register')
@@ -49,8 +51,7 @@ const More = ({item}) => {
       API.deleteFavorite(accessToken, id)
       setRefresh('delete')
       setTimeout(() => {
-        alert('Успешно удалено!')
-        window.location.reload()
+        setRefresh('delete')
       }, 1000)
     }else{
       alert('Вы не авторизованы!')
@@ -75,14 +76,14 @@ const More = ({item}) => {
               smallImage: {
                 alt: item?.title,
                 src: item?.image,
-                isFluidWidth: 500,
-                width: 500,
-                height: 500
+                isFluidWidth: 300,
+                width: 400,
+                height: 400
               },
               largeImage: {
                 src: item?.image,
-                width: 800,
-                height: 800
+                width: 900,
+                height: 700
               }
             }
 

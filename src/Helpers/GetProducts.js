@@ -5,7 +5,7 @@ export const GetProducts = () => {
   const [ base, setBase ] = React.useState(null)
   const [ page, setPage ] = React.useState(1)
 
-  const PAGE_SIZE = 10
+  const PAGE_SIZE = 8
   const ALL_PAGE = base?.length / PAGE_SIZE 
 
   const TOTAL_PAGE = Math.ceil(ALL_PAGE)

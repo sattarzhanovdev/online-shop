@@ -1,0 +1,99 @@
+.myaccount__container{
+  width: 100%;
+  @media screen and (min-width: 1440px) {
+    display: flex;
+    justify-content: center;
+  }
+  .myaccount{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    @media screen and (min-width: 1440px) {
+      width: 1440px;
+      flex-direction: row;
+    }
+    .left__acc{
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      border-radius: 10px;
+      @media screen and (min-width: 1440px) {
+        margin-right: 15px;
+      }
+      input{
+        display: none;
+      }
+      &::before{
+        content: 'Нажмите чтобы изменить';
+        width: 100%;
+        height: 100%;
+        background: rgba(128, 128, 128, 0.7);
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 20px;
+        opacity: 0;
+        transition: .3s;
+      }
+      &:hover:before{
+        content: 'Нажмите чтобы изменить';
+        width: 100%;
+        height: 100%;
+        background: rgba(128, 128, 128, 0.7);
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 20px;
+        opacity: 1;
+        transition: .3s;
+      }
+      img{
+        width: 300px;
+        height: 300px;
+        @media screen and (min-width: 1440px) {
+          width: 500px;
+          height: 500px;
+        }
+        border-radius: 10px;
+      }
+    }
+    .right__acc{
+      width: 300px;
+      @media screen and (min-width: 1440px) {
+        width: 500px;
+      }
+      div{
+        margin-bottom: 50px;
+        .answer{
+          color: grey;
+        }
+      }
+      button{
+        width: 150px;
+        height: 40px;
+        border: 2px solid orange;
+        border-radius: 5px;
+        background: none;
+        color: orange;
+        transition: .3s;
+        cursor: pointer;
+        &:hover{
+          background: orange;
+          color: white;
+        }
+        span{
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+}
