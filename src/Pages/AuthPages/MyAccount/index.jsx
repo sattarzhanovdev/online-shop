@@ -1,7 +1,9 @@
 import React from 'react'
 import './Myaccount.scss'
 import {API, BASE_URL} from "../../../API";
-import {AiFillEdit} from "react-icons/ai";
+import {AiFillEdit, AiOutlineCheck} from "react-icons/ai";
+import register from "../Register";
+import {useForm} from "react-hook-form";
 
 const MyAccount = () => {
   const [ user, setUser ] = React.useState(null)
@@ -21,6 +23,12 @@ const MyAccount = () => {
       setRefresh('ref')
     }, 1000)
   }, [refresh])
+
+  const {
+    register,
+    handleSubmit,
+    reset
+  } = useForm()
 
   const change = (file) => {
     const formData = new FormData();
@@ -60,72 +68,32 @@ const MyAccount = () => {
               />
           </div>
         </label>
-        {
-          editActive ?
-            <div className="right__acc">
-              <div>
-                <h3>
-                  Имя пользователя:
-                </h3>
-                <h3 className="answer">{user?.username}</h3>
-              </div>
-              <div>
-                <h3>
-                  Email:
-                </h3>
-                <h3 className="answer">{user?.email}</h3>
-              </div>
-              <div>
-                <h3>
-                  Номер телефона:
-                </h3>
-                <h3 className="answer">{user?.phone_number}</h3>
-              </div>
-              <div>
-                <h3>
-                  О себе:
-                </h3>
-                <h3 className="answer">{user?.about}</h3>
-              </div>
-
-              <button>
-                <span><AiFillEdit /></span>
-                Изменить
-              </button>
-            </div>
-          :
-            <div className="right__acc">
+        <div className="right__acc">
           <div>
-          <h3>
-          Имя пользователя:
-          </h3>
-          <h3 className="answer">{user?.username}</h3>
+            <h3>
+              Имя пользователя:
+            </h3>
+            <h3 className="answer">{user?.username}</h3>
           </div>
           <div>
-          <h3>
-          Email:
-          </h3>
-          <h3 className="answer">{user?.email}</h3>
+            <h3>
+              Email:
+            </h3>
+            <h3 className="answer">{user?.email}</h3>
           </div>
           <div>
-          <h3>
-          Номер телефона:
-          </h3>
-          <h3 className="answer">{user?.phone_number}</h3>
+            <h3>
+              Номер телефона:
+            </h3>
+            <h3 className="answer">{user?.phone_number}</h3>
           </div>
           <div>
-          <h3>
-          О себе:
-          </h3>
-          <h3 className="answer">{user?.about}</h3>
-          </div>
-
-          <button>
-          <span><AiFillEdit /></span>
-          Изменить
-          </button>
-          </div>
-        }
+            <h3>
+              О себе:
+            </h3>
+            <h3 className="answer">{user?.about}</h3>
+      </div>
+        </div>
       </div>
     </div>
   )

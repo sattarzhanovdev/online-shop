@@ -39,7 +39,7 @@ const Register = () => {
         .then(res => {
           localStorage.setItem('accessToken', res.data.access)
           localStorage.setItem('refreshToken', res.data.refresh)
-        }, 1000)
+        }, 2000)
       })
     }
     reset()

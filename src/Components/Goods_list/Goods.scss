@@ -1,35 +1,77 @@
 @import '../../scss/variables';
 
 .goods__container{
+  @media screen and (min-width: 1440px) {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
   .goods{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    .search{
+    @media screen and (min-width: 1440px) {
+      width: 1440px;
+    }
+    .up{
+      width: 100%;
       display: flex;
       align-items: center;
-      justify-content: center;
-      margin: 25px 0;
-      input{
-        width: 500px;
-        height: 40px;
-        padding: 0 15px;
-        border: 1px solid #243a6e;
-        border-radius: 5px;
-        background: #FBF5E2;
-        font-family: Arial, Helvetica, sans-serif;
-        outline: none;
+      justify-content: space-between;
+      .search{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 15px 35px;
+        input{
+          @media screen and (min-width: 425px) {
+            max-width: 280px;
+          }
+          @media screen and (min-width: 768px) {
+            max-width: 90%;
+          }
+          width: 200px;
+          height: 40px;
+          padding: 0 15px;
+          border: 1px solid #243a6e;
+          border-radius: 5px;
+          background: #FBF5E2;
+          font-family: Arial, Helvetica, sans-serif;
+          outline: none;
+        }
+        button{
+          width: 50px;
+          height: 40px;
+          border-radius: 5px;
+          border: 0;
+          margin-left: 15px;
+          background: #243a6e;
+          color: #FBF5E2;
+          cursor: pointer;
+        }
       }
-      button{
-        width: 50px;
-        height: 40px;
-        border-radius: 5px;
-        border: 0;
-        margin-left: 15px;
-        background: #243a6e;
-        color: #FBF5E2;
-        cursor: pointer;
+      .sort{
+        padding: 0 70px;
+        h3{
+          span{
+            color: #2B4174;
+            text-decoration: underline;
+            margin-left: 5px;
+            cursor: pointer;
+          }
+        }
+        .drop{
+          position: absolute;
+          li{
+            width: 100%;
+            list-style: none;
+            background: #FBF5E2;
+            padding: 15px;
+            border-bottom: 1px solid #454545;
+            cursor: pointer;
+          }
+        }
       }
     }
     .goods__cards{

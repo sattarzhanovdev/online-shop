@@ -1,0 +1,27 @@
+.about__container{
+  @media screen and (min-width: 1440px) {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .about{
+    @media screen and (min-width: 1440px) {
+      width: 1440px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      flex-direction: column;
+    }
+    .texts{
+      .text{
+        margin-bottom: 50px;
+        h2{
+          color: #2B4174;
+        }
+        span{
+          color: #454545;
+        }
+      }
+    }
+  }
+}

@@ -15,7 +15,7 @@ export const API = {
       'Authorization': `Bearer ${accessToken}`
     }
   },),
-  postBasketDetails: (accessToken, data) => axios.post('/basket_detail/', data, {
+  putCount: (accessToken, data) => axios.post(`/basket_detail/`, data, {
     headers: {
       'Authorization': `Bearer ${accessToken}`
     }

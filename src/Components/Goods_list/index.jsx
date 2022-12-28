@@ -4,27 +4,77 @@ import {GetProducts} from "../../Helpers/GetProducts";
 import {useNavigate} from "react-router-dom";
 import {MdOutlineArrowLeft, MdOutlineArrowRight} from "react-icons/md";
 import './Goods.scss'
+import {sortList} from "../../Utils";
 
 const Goods_list = () => {
   const { base, PAGE_SIZE, TOTAL_PAGE, page, setPage } = GetProducts()
   const [ search, setSearch ] = React.useState('')
+  const [ sortType, setSortType ] = React.useState('выберите')
+  const [ sortTypeVal, setSortTypeVal ] = React.useState('')
+  const [ sortActive, setSortActive ] = React.useState(false)
   const Navigate = useNavigate()
 
-  const filteredBase = base?.filter(item => item.category === 1 && item.title.toLowerCase().includes(search.toLowerCase()) ? item : null)
+  const filteredBase = base?.filter(item => {
+    if(item.category === 1 && item.title.toLowerCase().includes(search.toLowerCase())){
+      return item
+    }else if(sortTypeVal === 'price'){
+      base?.sort((a, b) => {
+        return a.price - b.price
+      })
+    }else if(sortTypeVal === 'alphabet'){
+      base?.sort((a, b) => {
+        return a.title > b.title
+      })
+    }
+  })
+
   const nextPage = () => setPage(prev => prev + 1)
   const prevPage = () => setPage(prev => prev - 1)
   return (
     <div className='goods__container'>
       <div className="goods">
-        <div className="search">
-          <input
-            type="text"
-            placeholder="Введите название товара"
-            onChange={e => setSearch(e.target.value)}
-          />
-          <button>
-            <BiSearch />
-          </button>
+        <div className="up">
+          <div className="search">
+            <input
+              type="text"
+              placeholder="Введите название товара"
+              onChange={e => setSearch(e.target.value)}
+            />
+            <button>
+              <BiSearch />
+            </button>
+          </div>
+          <div className="sort">
+            <h3>
+              Сортировка по:
+              <span
+                onClick={() => setSortActive(!sortActive)}
+              >
+                {sortType}
+              </span>
+            </h3>
+            {
+              sortActive ?
+                <div className="drop">
+                  {
+                    sortList.map(({id, title, val}) => (
+                      <li
+                        key={id}
+                        onClick={() => {
+                          setSortType(title.slice(2, title.length))
+                          setSortTypeVal(val)
+                          setSortActive(false)
+                        }}
+                      >
+                        {title}
+                      </li>
+                    ))
+                  }
+                </div>
+                :
+                null
+            }
+          </div>
         </div>
         <div className="goods__cards">
           {

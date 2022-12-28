@@ -20,16 +20,17 @@ const More = ({item}) => {
     setTimeout(() => {
       setRefresh('Helloo')
     }, 1000)
-    }, [refresh]) 
+  }, [refresh])
 
   const Navigate = useNavigate()
 
   const to__basket = () => {
     if(accessToken){
-      API.postBaskets(accessToken, {products: [JSON.stringify(item.id)], is_active: item.is_active, count: count})
-      setRefresh('post!')
+      API.postBaskets(accessToken, {products: [JSON.stringify(item.id)], is_active: item.is_active})
 
-      API.postBasketDetails(accessToken, {products: [JSON.stringify(item.id)], count: count})
+      // setTimeout(() => {
+      //   API.putCount(accessToken, {"product": JSON.stringify(item.id), "amount": JSON.stringify(count)})
+      // }, 3000)
     }else{
       alert('Вы не авторизованы')
       Navigate('/auth/register')
@@ -82,7 +83,7 @@ const More = ({item}) => {
               },
               largeImage: {
                 src: item?.image,
-                width: 900,
+                width: 800,
                 height: 700
               }
             }
@@ -123,18 +124,18 @@ const More = ({item}) => {
             >
               -
             </button>
-            <input 
+            <input
               type="text"
               value={count}
               onChange={e => setCount(Number(e.target.value))}
             />
             <button
-              onClick={() => setCount(count + 1)} 
+              onClick={() => setCount(count + 1)}
             >
               +
             </button>
           </div>
-          <button 
+          <button
             className='to__basket'
             onClick={() => to__basket()}
           >

@@ -8,7 +8,6 @@ import './Basket.scss'
 const Basket_list = () => {
   const [ basketBase, setBasketBase ] = React.useState('')
   const [ refresh, setRefresh ] = React.useState('')
-  const [ count, setCount ] = React.useState(1)
   const { base } = GetProducts()
   
   const accessToken = localStorage.getItem('accessToken')
@@ -23,7 +22,7 @@ const Basket_list = () => {
           res.data?.map(item => {
             return base?.map(val => val.id === item.product ? basketBase.unshift(val) : '')
           })
-        })  
+        })
     }else{
       alert('Вы не авторизованы!')
       Navigate('/auth/register')
@@ -34,14 +33,24 @@ const Basket_list = () => {
   }, [refresh])
 
   const delete__basket = (id) => {
-    if(accessToken){  
+    if(accessToken){
       API.deleteBaskets(accessToken, id)
       setRefresh('refreshing!')
     }else{
       alert('Вы не авторизованы!')
       Navigate('/auth/register')
     }
-  } 
+  }
+
+  const post__count = (id, amount) => {
+    if (accessToken) {
+      API.putCount(accessToken, {"product": JSON.stringify(id), "amount": JSON.stringify(amount)})
+      setRefresh('refreshing!')
+    } else {
+      alert('Вы не авторизованы!')
+      Navigate('/auth/register')
+    }
+  }
 
   return (
     <div className='basket__container'>
@@ -51,8 +60,8 @@ const Basket_list = () => {
         </h2>
         <div className="basket__table">
           {
-            basketBase?.length > 0 ? 
-            basketBase.map((item, i) => (
+            basketBase?.length > 0 ?
+              basketBase.map((item, i) => (
               <div key={i}>
                 <img 
                   src={`${BASE_URL}${item.products_data[0].image}`} 
@@ -61,23 +70,28 @@ const Basket_list = () => {
                 <h3>{item.products_data[0].title}</h3>
                 <div className="count">
                   <button
-                    onClick={() => setCount(count - 1)}
-                    disabled={count === 1 ? true : false}
+                    onClick={() => {
+                      post__count(
+                        item.products_data[0].id ,
+                        item.products_data[0].amount - 1
+                      )
+                    }}
+                    disabled={item.products_data[0].amount === 1 ? true : false}
                   >
                     -
                   </button>
                   <input 
                     type="text"
-                    value={count}
-                    onChange={e => setCount(Number(e.target.value))}
+                    value={item.products_data[0].amount}
+                    onChange={e => post__count(item.products_data[0].id, Number(e.target.value))}
                   />
                   <button
-                    onClick={() => setCount(count + 1)} 
+                    onClick={() => post__count(item.products_data[0].id, item.products_data[0].amount + 1)}
                   >
                     +
                   </button>
                 </div>
-                <h2>{item.products_data[0].price} сом/шт</h2>
+                <h2>{item.products_data[0].amount * item.products_data[0].price}.00 сом</h2>
                 <div className="delete">
                   <li 
                     onClick={() => delete__basket(JSON.stringify(item.id))}
@@ -103,10 +117,27 @@ const Basket_list = () => {
               <h2>Корзина пустая!</h2>
             </div>
           }
+          <div className="summa">
+            {
+              basketBase ?
+                basketBase.map((item) => (
+                    <h2>
+                      Общая сумма: <span>{item.total}.00 сом</span>
+                    </h2>
+                )).reduce((a, b) => (
+                  <h2>
+                    Общая сумма: <span>{a + b}.00 сом</span>
+                  </h2>
+                ))
+                :
+                null
+            }
+          </div>
         </div>
+
       </div>
     </div>
   )
 }
 
-export default Basket_list;
+export default Basket_list

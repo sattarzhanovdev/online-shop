@@ -25,41 +25,41 @@
       }
     }
     .down__register{
-      width: 110%;
+      width: 100%;
       background: $default-banner-background-color;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
       div{
-        display: flex;
-        align-items: flex-start;
-        justify-content: center;
-        flex-direction: column;
-        width: 100%;
+        margin: 15px;
         p{
+          margin: 0;
           margin-bottom: 10px;
         }
         input{
           width: 90%;
-          height: 40px;
+          height: 35px;
           padding: 0 10px;
           border: 1px solid $default-color;
           border-radius: 10px;
           outline: none;
         }
+        textarea{
+          width: 90%;
+          height: 50px;
+          padding: 10px 10px;
+          border: 1px solid $default-color;
+          border-radius: 10px;
+          outline: none;
+        }
         button{
-          width: 92%;
+          width: 350px;
           height: 40px;
           border-radius: 10px;
           border: 0;
           background: $default-up-header-color;
           color: white;
           font-weight: bold;
-          margin-top: 25px;
+          margin-top: 15px;
         }
       }
-      
       .no__account{
         text-align: center;
         a{

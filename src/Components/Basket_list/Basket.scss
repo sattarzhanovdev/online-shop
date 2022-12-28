@@ -23,6 +23,7 @@
       align-items: center;
       justify-content: center;
       flex-direction: column;
+      position: relative;
       div{
         width: 280px;
         @media screen and (min-width: 768px) {
@@ -40,6 +41,7 @@
         justify-content: space-around;
         flex-direction: column;
         border-bottom: 2px solid $default-up-text-color;
+        position: relative;
         @media screen and (min-width: 768px) {
           flex-direction: row;
           border-bottom: 1px solid $default-up-text-color;
@@ -100,10 +102,33 @@
         .delete{
           width: 50px;
           border: none;
+          position: absolute;
+          right: 15px;
+          top: 15px;
+          @media screen and (min-width: 768px) {
+            position: unset;
+          }
           li{
             list-style: none;
             font-size: 20px;
             color: $default-color;
+          }
+        }
+      }
+      .summa{
+        position: absolute;
+        right: 0;
+        bottom: -50px;
+        border-bottom: 0;
+        h2{
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+          span{
+            font-size: 20px;
+            margin-left: 15px;
+            color: #2B4174;
           }
         }
       }
@@ -113,7 +138,7 @@
         align-items: center;
         justify-content: center;
         flex-direction: column;
-        border: none;
+        border-bottom: none;
         img{
           width: 200px;
           height: 200px;
@@ -125,6 +150,7 @@
           margin-bottom: 0;
           font-family: "Playfair Display SC";
           font-size: 25px;
+          text-align: center;
         }
         button{
           @media screen and (min-width: 1024px) {
